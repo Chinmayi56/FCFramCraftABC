@@ -45,7 +45,7 @@ export default function Sidebar({ mobileOpen, onCloseMobile, collapsed }: Sideba
           alt="Farm Craft"
           className={collapsed
             ? "h-10 w-10 shrink-0 rounded-lg object-contain ring-1 ring-white/10"
-            : "h-10 w-28 shrink-0 rounded-lg bg-white object-contain p-1 ring-1 ring-white/10"}
+            : "h-10 w-24 shrink-0 rounded-lg bg-white object-contain p-1 ring-1 ring-white/10"}
         />
         {!collapsed && (
           <div className="min-w-0">
