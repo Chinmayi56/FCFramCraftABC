@@ -1,0 +1,11 @@
+Original Git remote found in the supplied project:
+https://github.com/Chinmayi56/framcraft.git
+
+The .git folder was intentionally omitted from the update ZIP so the archive does not contain old Git history or repository metadata. To connect this updated project to the same repository:
+
+git init
+git remote add origin https://github.com/Chinmayi56/framcraft.git
+git branch -M main
+git add .
+git commit -m "Update Farm Craft customer cart and storefront"
+git push -u origin main
