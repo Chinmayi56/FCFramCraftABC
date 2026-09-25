@@ -73,7 +73,7 @@ export const SITE_PAGES = [
 
 export const COMPANY = {
   name: "Farm Craft",
-  gstin: "37AQXPV3001H1ZG",
+  gstin: "37AQXPV3001H1ZG"
   logo: "assets/farmcraft-logo-full.png",
   // Square, uncropped icon-only version of the same logo artwork — used
   // wherever the brand mark needs to sit in a compact square slot (header,

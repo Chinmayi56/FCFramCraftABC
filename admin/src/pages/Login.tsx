@@ -77,7 +77,7 @@ export default function Login() {
               workspace built for the Farm Craft team.
             </p>
           </div>
-          <p className="text-xs text-farm-mist/40">GSTIN: 37AQXPV3001H1ZG</p>
+          <p className="text-xs text-farm-mist/40"></p>
         </div>
       </div>
 
