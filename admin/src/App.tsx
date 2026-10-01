@@ -5,6 +5,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminLayout from "./components/layout/AdminLayout";
 import { NotificationProvider } from "./context/NotificationContext";
 import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
 
 // Lazy-load Admin pages.
 // Each page is downloaded only when the user opens that route.
@@ -55,6 +56,12 @@ export default function App() {
       <Route
         path="/admin/login"
         element={<Login />}
+      />
+
+      {/* Forgot Password */}
+      <Route
+        path="/admin/forgot-password"
+         element={<ForgotPassword />}
       />
 
       {/* Protected Admin area */}

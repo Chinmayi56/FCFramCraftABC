@@ -1,5 +1,4 @@
-// Admin authentication against the real FastAPI backend
-// (POST /api/auth/admin/login) — Backend Step 4.
+// Admin authentication against the real FastAPI backend.
 
 import { apiRequest } from "./apiClient";
 
@@ -32,29 +31,91 @@ function toAdminUser(user: UserOut): AdminUser {
   };
 }
 
-export async function adminLogin(email: string, password: string): Promise<{ token: string; admin: AdminUser }> {
+export async function adminLogin(
+  email: string,
+  password: string
+): Promise<{ token: string; admin: AdminUser }> {
   const data = await apiRequest<TokenResponse>("/api/auth/admin/login", {
     method: "POST",
     auth: false,
-    body: { email, password },
+    body: {
+      email,
+      password,
+    },
   });
-  return { token: data.access_token, admin: toAdminUser(data.user) };
+
+  return {
+    token: data.access_token,
+    admin: toAdminUser(data.user),
+  };
 }
 
-/** PATCH /api/auth/me - update the signed-in admin's own name/email */
-export async function updateAdminProfile(input: { name?: string; email?: string }): Promise<AdminUser> {
+/**
+ * Start admin password reset.
+ */
+export async function forgotAdminPassword(email: string): Promise<void> {
+  await apiRequest<void>("/api/auth/admin/forgot-password", {
+    method: "POST",
+    auth: false,
+    body: {
+      email,
+    },
+  });
+}
+
+/**
+ * Verify the password-reset code.
+ */
+export async function verifyAdminResetCode(
+  email: string,
+  code: string
+): Promise<void> {
+  await apiRequest<void>("/api/auth/admin/verify-reset", {
+    method: "POST",
+    auth: false,
+    body: {
+      email,
+      code,
+    },
+  });
+}
+
+/**
+ * Reset password after the reset code has been verified.
+ */
+export async function resetAdminPassword(
+  email: string,
+  newPassword: string
+): Promise<void> {
+  await apiRequest<void>("/api/auth/admin/reset-password", {
+    method: "POST",
+    auth: false,
+    body: {
+      email,
+      new_password: newPassword,
+    },
+  });
+}
+
+/** PATCH /api/auth/me */
+export async function updateAdminProfile(input: {
+  name?: string;
+  email?: string;
+}): Promise<AdminUser> {
   const data = await apiRequest<UserOut>("/api/auth/me", {
     method: "PATCH",
     body: input,
   });
+
   return toAdminUser(data);
 }
 
 export async function adminLogout(): Promise<void> {
   try {
-    await apiRequest<void>("/api/auth/logout", { method: "POST" });
+    await apiRequest<void>("/api/auth/logout", {
+      method: "POST",
+    });
   } catch {
-    // Logout is a client-side action regardless (JWTs are stateless) —
-    // ignore network/API errors so the user can always sign out locally.
+    // Logout remains a client-side action.
   }
 }

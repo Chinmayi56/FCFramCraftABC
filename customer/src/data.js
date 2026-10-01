@@ -73,20 +73,13 @@ export const SITE_PAGES = [
 
 export const COMPANY = {
   name: "Farm Craft",
-  gstin: "37AQXPV3001H1ZG"
+  gstin: "37AQXPV3001H1ZG",
   logo: "assets/farmcraft-logo-full.png",
-  // Square, uncropped icon-only version of the same logo artwork — used
-  // wherever the brand mark needs to sit in a compact square slot (header,
-  // footer, mobile tab bar) without cropping the full rectangular lockup.
   logoMark: "assets/farmcraft-logo-full.png",
   email: "admin@farmcraft.com",
   phone: "+91 94404 36868",
-  whatsapp: "919000000000", // digits only, country code first — used for wa.me links (demo placeholder)
+  whatsapp: "919000000000",
   address: "1-23A, Swaraj Tractor Showroom, Palakonda, Manyam District, Andhra Pradesh - 532440strial Road, Andhra Pradesh, India",
-  addressNote: "",
-  website: "",
-  mobileNumbers: [],
-  whatsappNumbers: [],
 };
 
 // Company services — mirrors a future `GET /services` endpoint.
